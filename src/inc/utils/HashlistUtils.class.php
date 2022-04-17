@@ -208,7 +208,7 @@ class HashlistUtils {
     fclose($wordlistFile);
     
     //add file to files list
-    $file = new File(null, $wordlistName, Util::filesize($wordlistFilename), $hashlist->getIsSecret(), 0, $hashlist->getAccessGroupId(), null);
+    $file = new File(null, $wordlistName, Util::filesize($wordlistFilename), $hashlist->getIsSecret(), 0, $hashlist->getAccessGroupId());
     Factory::getFileFactory()->save($file);
     return [$wordCount, $wordlistName, $file];
   }
@@ -674,7 +674,7 @@ class HashlistUtils {
     fclose($file);
     usleep(1000000);
     
-    $file = new File(null, $tmpname, Util::filesize($tmpfile), $hashlist->getIsSecret(), 0, $hashlist->getAccessGroupId(), null);
+    $file = new File(null, $tmpname, Util::filesize($tmpfile), $hashlist->getIsSecret(), 0, $hashlist->getAccessGroupId());
     $file = Factory::getFileFactory()->save($file);
     return $file;
   }
@@ -759,7 +759,6 @@ class HashlistUtils {
       Factory::getAgentFactory()->getDB()->rollback();
       throw new HTException("Required file does not exist!");
     }
-    // replace countLines with fileLineCount? Seems like a better option, not OS-dependent
     else if (Util::countLines($tmpfile) > SConfig::getInstance()->getVal(DConfig::MAX_HASHLIST_SIZE)) {
       Factory::getAgentFactory()->getDB()->rollback();
       throw new HTException("Hashlist has too many lines!");
@@ -1048,7 +1047,7 @@ class HashlistUtils {
     fclose($file);
     usleep(1000000);
     
-    $file = new File(null, $tmpname, Util::filesize($tmpfile), $hashlist->getIsSecret(), 0, $hashlist->getAccessGroupId(), null);
+    $file = new File(null, $tmpname, Util::filesize($tmpfile), $hashlist->getIsSecret(), 0, $hashlist->getAccessGroupId());
     return Factory::getFileFactory()->save($file);
   }
   

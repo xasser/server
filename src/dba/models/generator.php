@@ -102,8 +102,7 @@ $CONF['File'] = [
   'size',
   'isSecret',
   'fileType',
-  'accessGroupId',
-  'lineCount'
+  'accessGroupId'
 ];
 $CONF['Hash'] = [
   'hashId',
